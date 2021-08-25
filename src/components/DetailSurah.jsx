@@ -7,7 +7,6 @@ import listSurah from '../json/list_surah.json'
 
 const DetailSurah = () => {
     const [detailSurah, setDetailSurah] = useState([])
-    const [namaSurah, setNamaSurah] = useState()
     const [loading, setLoading] = useState(false)
 
     const { identifier } = useParams()
@@ -29,7 +28,7 @@ const DetailSurah = () => {
     useEffect(() => {
         getDetailSurah()
     }, [identifier])
-    // const id = key.replace('qty', '')
+
     return(
         <div className="container">
             <div>
