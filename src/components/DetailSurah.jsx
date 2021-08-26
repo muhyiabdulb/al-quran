@@ -27,16 +27,30 @@ const DetailSurah = () => {
     }
 
     const bismillah = () => {
-        if(loading) {
-            return(
+        if (loading) {
+            return (
                 <div></div>
             )
-         } else {
-            return(
+        } else {
+            return (
                 listSurah[identifier - 1].nomor == 1 || listSurah[identifier - 1].nomor == 9 ? '' : <Card><Card.Body>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</Card.Body></Card>
             )
-         }
+        }
     }
+
+    const data = loading ? <h3 className="position-absolute top-50 start-50 translate-middle text-success fs-2">Proses Request . . .</h3> :
+        detailSurah.map((item, index) => {
+            return (
+                <Card bg={index % 2 === 0 ? 'info' : ''} key={index}>
+                    <Card.Body className="">
+                        <Card.Title>{item.nomor}.</Card.Title>
+                        <h4 style={{ textAlign: "right", }}>{index === 0 && listSurah[identifier - 1].nomor != 1 ? item.ar.replace('بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ', '') : item.ar}</h4>
+                        <Card.Text>{item.tr}</Card.Text>
+                        <Card.Text>{item.id}</Card.Text>
+                    </Card.Body>
+                </Card>
+            )
+        })
 
     useEffect(() => {
         getDetailSurah()
@@ -60,21 +74,7 @@ const DetailSurah = () => {
             </div>
             <CardColumns className="">
                 <h4 className="text-center">{bismillah()}</h4>
-                {
-                    loading ? <h3 className="d-flex justify-content-center align-items-center display-6 text-success vh-100">Proses Request . . .</h3> :
-                        detailSurah.map((item, index) => {
-                            return (
-                                <Card bg={index % 2 == 0 ? 'info' : ''} key={index}>
-                                    <Card.Body className="">
-                                        <Card.Title>{item.nomor}.</Card.Title>
-                                        <h4 style={{ textAlign: "right", }}>{index == 0 && listSurah[identifier - 1].nomor != 1 ? item.ar.replace('بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ', '') : item.ar}</h4>
-                                        <Card.Text>{item.tr}</Card.Text>
-                                        <Card.Text>{item.id}</Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            )
-                        })
-                }
+                {data}
             </CardColumns>
         </div>
     )
