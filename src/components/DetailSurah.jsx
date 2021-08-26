@@ -31,9 +31,9 @@ const DetailSurah = () => {
             return (
                 <div></div>
             )
-        } else {
-            return (
-                listSurah[identifier - 1].nomor === 1 || listSurah[identifier - 1].nomor === 9 ? '' : <Card><Card.Body>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</Card.Body></Card>
+         } else {
+            return(
+                listSurah[identifier - 1].nomor == 1 || listSurah[identifier - 1].nomor == 9 ? '' : <Card><Card.Body>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</Card.Body></Card>
             )
         }
     }
@@ -44,7 +44,7 @@ const DetailSurah = () => {
                 <Card bg={index % 2 === 0 ? 'info' : ''} key={index}>
                     <Card.Body className="">
                         <Card.Title>{item.nomor}.</Card.Title>
-                        <h4 style={{ textAlign: "right", }}>{index === 0 && listSurah[identifier - 1].nomor !== 1 ? item.ar.replace('بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ', '') : item.ar}</h4>
+                        <h4 style={{ textAlign: "right", }}>{index == 0 && listSurah[identifier - 1].nomor != 1 ? item.ar.replace('بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ', '') : item.ar}</h4>
                         <Card.Text><div dangerouslySetInnerHTML={{__html: item.tr }} /></Card.Text>
                         <Card.Text>{item.id}</Card.Text>
                     </Card.Body>
