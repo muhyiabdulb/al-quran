@@ -1,5 +1,6 @@
 import React from 'react'
 import { Accordion } from 'react-bootstrap'
+import { AiFillEye } from 'react-icons/ai';
 import { NavLink } from 'react-router-dom';
 
 const SearchList = ({ filterSurah }) => {
@@ -19,7 +20,7 @@ const SearchList = ({ filterSurah }) => {
                         {item.keterangan}
                         <br />
                         <div className="d-grid gap-2 pt-3">
-                            <NavLink className="btn btn-primary" to={`/detail-surah/${item.nomor}`}> Detail Surah</NavLink>
+                            <NavLink className="btn btn-primary" to={`/detail-surah/${item.nomor}`}> <AiFillEye size={30} /> Detail Surah</NavLink>
                         </div>
                     </Accordion.Body>
                 </Accordion.Item>

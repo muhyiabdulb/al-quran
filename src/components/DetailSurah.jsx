@@ -43,30 +43,29 @@ const DetailSurah = () => {
     }, [identifier])
 
     return (
-        <div className="container pt-4 pb-4">
-            <div className="position-relative mb-3 font-monospace">
-                <div className="position-absolute top-0 start-0">
-                    <NavLink className="btn btn-primary" to={`/`}><AiOutlineLeft /> Kembali</NavLink>
+        <div className="container pt-4 pb-4 font-monospace">
+            <div className="">
+                <NavLink className="btn btn-sm btn-primary" to={`/`}><AiOutlineLeft /> Kembali</NavLink>
+            </div>
+            <div className="text-center">
+                <div className="">
+                    <h4>Surah {listSurah[identifier - 1].nama}</h4>
                 </div>
-                <div className="text-center">
-                    <h3>Surah {listSurah[identifier - 1].nama} ({listSurah[identifier - 1].ayat} Ayat)</h3>
+                <div className="">
+                    ({listSurah[identifier - 1].ayat} Ayat)
                 </div>
-                <div className="position-absolute top-0 end-0">
-                    <h3>{listSurah[identifier - 1].arti}</h3>
+                <div className="">
+                    <h4>{listSurah[identifier - 1].arti}</h4>
                 </div>
             </div>
-            <CardColumns className="font-monospace">
-                <h4 className="text-center">
-                    {
-                        bismillah()
-                    }
-                </h4>
+            <CardColumns className="">
+                <h4 className="text-center">{bismillah()}</h4>
                 {
                     loading ? <h3 className="d-flex justify-content-center align-items-center display-6 text-success vh-100">Proses Request . . .</h3> :
                         detailSurah.map((item, index) => {
                             return (
                                 <Card bg={index % 2 == 0 ? 'info' : ''} key={index}>
-                                    <Card.Body className="font-monospace">
+                                    <Card.Body className="">
                                         <Card.Title>{item.nomor}.</Card.Title>
                                         <h4 style={{ textAlign: "right", }}>{index == 0 && listSurah[identifier - 1].nomor != 1 ? item.ar.replace('بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ', '') : item.ar}</h4>
                                         <Card.Text>{item.tr}</Card.Text>
