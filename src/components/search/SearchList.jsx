@@ -8,13 +8,13 @@ const SearchList = ({ filterSurah }) => {
         return (
             <Accordion>
                 <Accordion.Item eventKey={index}>
-                    <Accordion.Header>
+                    <Accordion.Header className="font-monospace">
                         {item.nama} ({item.asma})
                         <br />
                         {item.arti} ({item.ayat} ayat)
                     </Accordion.Header>
-                    <Accordion.Body>
-                        <small className="text-muted">Surah ke {item.nomor}</small>
+                    <Accordion.Body className="font-monospace">
+                        <small className="text-muted">Surah ke {item.nomor}</small> &middot; <small className="text-muted">Diturunkan di {item.type}</small>
                         <br />
                         {item.keterangan}
                         <br />

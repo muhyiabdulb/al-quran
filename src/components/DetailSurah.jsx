@@ -10,7 +10,7 @@ const DetailSurah = () => {
     const [loading, setLoading] = useState(false)
     const { identifier } = useParams()
     console.log(identifier)
-    
+
     const getDetailSurah = async () => {
         setLoading(true)
         try {
@@ -25,36 +25,52 @@ const DetailSurah = () => {
         }
     }
 
+    const bismillah = () => {
+        if(loading) {
+            return(
+                <div></div>
+            )
+         } else {
+            return(
+                listSurah[identifier - 1].nomor == 1 || listSurah[identifier - 1].nomor == 9 ? '' : <Card><Card.Body>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</Card.Body></Card>
+            )
+         }
+    }
+
     useEffect(() => {
         getDetailSurah()
     }, [identifier])
 
-    return(
-        <div className="container">
-            <div>
-                <NavLink className="btn btn-primary" to={`/`}>Kembali</NavLink> 
-                <h3 className="text-center">Surah {listSurah[identifier - 1].nama}</h3>
+    return (
+        <div className="container pt-4 pb-4">
+            <div className="position-relative mb-3 font-monospace">
+                <div className="position-absolute top-0 start-0">
+                    <NavLink className="btn btn-primary" to={`/`}>Kembali</NavLink>
+                </div>
+                <div className="text-center">
+                    <h3>Surah {listSurah[identifier - 1].nama}</h3>
+                </div>
             </div>
             <CardColumns>
                 <h4 className="text-center">
                     {
-                        listSurah[identifier - 1].nomor == 1 || listSurah[identifier - 1].nomor == 9 ? '' : <Card><Card.Body>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</Card.Body></Card>
+                        bismillah()
                     }
                 </h4>
                 {
-                loading ? <h3 className="text-center">loading . . .</h3> : 
-                    detailSurah.map((item, index) => {
-                        return( 
-                            <Card bg={index % 2 == 0 ? 'info' : ''} key={index}>
-                                <Card.Body>
-                                    <Card.Title>{item.nomor}.</Card.Title>
-                                    <h4 style={{ textAlign: "right", }}>{ index == 0 && listSurah[identifier - 1].nomor != 1 ? item.ar.replace('بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ', '') : item.ar}</h4>
-                                    <Card.Text>{item.tr}</Card.Text>
-                                    <Card.Text>{item.id}</Card.Text>
-                                </Card.Body>
-                            </Card>
-                        )
-                    })
+                    loading ? <h3 className="text-center">loading . . .</h3> :
+                        detailSurah.map((item, index) => {
+                            return (
+                                <Card bg={index % 2 == 0 ? 'info' : ''} key={index}>
+                                    <Card.Body className="font-monospace">
+                                        <Card.Title>{item.nomor}.</Card.Title>
+                                        <h4 style={{ textAlign: "right", }}>{index == 0 && listSurah[identifier - 1].nomor != 1 ? item.ar.replace('بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ', '') : item.ar}</h4>
+                                        <Card.Text>{item.tr}</Card.Text>
+                                        <Card.Text>{item.id}</Card.Text>
+                                    </Card.Body>
+                                </Card>
+                            )
+                        })
                 }
             </CardColumns>
         </div>
