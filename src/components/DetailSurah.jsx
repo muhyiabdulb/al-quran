@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useParams, NavLink } from 'react-router-dom'
 import { CardColumns, Card } from 'react-bootstrap'
 import listSurah from '../json/list_surah.json'
+import { AiOutlineLeft } from "react-icons/ai";
 
 const DetailSurah = () => {
     const [detailSurah, setDetailSurah] = useState([])
@@ -45,20 +46,23 @@ const DetailSurah = () => {
         <div className="container pt-4 pb-4">
             <div className="position-relative mb-3 font-monospace">
                 <div className="position-absolute top-0 start-0">
-                    <NavLink className="btn btn-primary" to={`/`}>Kembali</NavLink>
+                    <NavLink className="btn btn-primary" to={`/`}><AiOutlineLeft /> Kembali</NavLink>
                 </div>
                 <div className="text-center">
-                    <h3>Surah {listSurah[identifier - 1].nama}</h3>
+                    <h3>Surah {listSurah[identifier - 1].nama} ({listSurah[identifier - 1].ayat} Ayat)</h3>
+                </div>
+                <div className="position-absolute top-0 end-0">
+                    <h3>{listSurah[identifier - 1].arti}</h3>
                 </div>
             </div>
-            <CardColumns>
+            <CardColumns className="font-monospace">
                 <h4 className="text-center">
                     {
                         bismillah()
                     }
                 </h4>
                 {
-                    loading ? <h3 className="text-center">loading . . .</h3> :
+                    loading ? <h3 className="d-flex justify-content-center align-items-center display-6 text-success vh-100">Proses Request . . .</h3> :
                         detailSurah.map((item, index) => {
                             return (
                                 <Card bg={index % 2 == 0 ? 'info' : ''} key={index}>

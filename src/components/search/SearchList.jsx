@@ -19,7 +19,7 @@ const SearchList = ({ filterSurah }) => {
                         {item.keterangan}
                         <br />
                         <div className="d-grid gap-2 pt-3">
-                            <NavLink className="btn btn-primary" to={`/detail-surah/${item.nomor}`}>Detail Surah</NavLink>
+                            <NavLink className="btn btn-primary" to={`/detail-surah/${item.nomor}`}> Detail Surah</NavLink>
                         </div>
                     </Accordion.Body>
                 </Accordion.Item>
