@@ -33,7 +33,7 @@ const DetailSurah = () => {
             )
          } else {
             return(
-                listSurah[identifier - 1].nomor == 1 || listSurah[identifier - 1].nomor == 9 ? '' : <Card><Card.Body>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</Card.Body></Card>
+                listSurah[identifier - 1].nomor === 1 || listSurah[identifier - 1].nomor === 9 ? '' : <Card><Card.Body>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</Card.Body></Card>
             )
          }
     }
@@ -64,11 +64,11 @@ const DetailSurah = () => {
                     loading ? <h3 className="d-flex justify-content-center align-items-center display-6 text-success vh-100">Proses Request . . .</h3> :
                         detailSurah.map((item, index) => {
                             return (
-                                <Card bg={index % 2 == 0 ? 'info' : ''} key={index}>
+                                <Card bg={index % 2 === 0 ? 'info' : ''} key={index}>
                                     <Card.Body className="">
                                         <Card.Title>{item.nomor}.</Card.Title>
-                                        <h4 style={{ textAlign: "right", }}>{index == 0 && listSurah[identifier - 1].nomor != 1 ? item.ar.replace('بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ', '') : item.ar}</h4>
-                                        <Card.Text>{item.tr}</Card.Text>
+                                        <h4 style={{ textAlign: "right", }}>{index === 0 && listSurah[identifier - 1].nomor !== 1 ? item.ar.replace('بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ', '') : item.ar}</h4>
+                                        <Card.Text><div dangerouslySetInnerHTML={{__html: item.tr }} /></Card.Text>
                                         <Card.Text>{item.id}</Card.Text>
                                     </Card.Body>
                                 </Card>

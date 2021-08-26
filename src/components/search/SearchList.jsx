@@ -5,9 +5,9 @@ import { NavLink } from 'react-router-dom';
 
 const SearchList = ({ filterSurah }) => {
     console.log(filterSurah)
-    const filtered = filterSurah == '' ? <h3 className="display-4 text-center text-danger">Surah Tidak Ada</h3> : filterSurah.map((item, index) => {
+    const filtered = filterSurah === '' ? <h3 className="display-4 text-center text-danger">Surah Tidak Ada</h3> : filterSurah.map((item, index) => {
         return (
-            <Accordion>
+            <Accordion key={index}>
                 <Accordion.Item eventKey={index}>
                     <Accordion.Header className="font-monospace">
                         {item.nama} ({item.asma})
@@ -17,7 +17,7 @@ const SearchList = ({ filterSurah }) => {
                     <Accordion.Body className="font-monospace">
                         <small className="text-muted">Surah ke {item.nomor}</small> &middot; <small className="text-muted">Diturunkan di {item.type}</small>
                         <br />
-                        {item.keterangan}
+                        <div dangerouslySetInnerHTML={{__html: item.keterangan }} />
                         <br />
                         <div className="d-grid gap-2 pt-3">
                             <NavLink className="btn btn-primary" to={`/detail-surah/${item.nomor}`}> <AiFillEye size={30} /> Detail Surah</NavLink>
