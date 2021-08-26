@@ -11,7 +11,7 @@ const SearchList = ({ filterSurah }) => {
             <Accordion key={index}  className="font-monospace">
                 <Accordion.Item className={index % 2 === 0 ? 'bg-info' : ''} eventKey={index}>
                     <Accordion.Header>
-                        {item.nomor}. {item.nama} ({item.asma}) Arti ({item.arti}) ({item.ayat} ayat)
+                        {item.nomor}. {item.nama} ({item.asma}) Arti ({item.arti}) ({item.ayat} Ayat)
                         <br />
                     </Accordion.Header>
                     <Accordion.Body>
