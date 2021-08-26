@@ -2,12 +2,16 @@ import React from 'react'
 import { Accordion } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom';
 import listSurah from '../json/list_surah.json'
+import Search from './search/Search';
 
 const ListSurah = () => {
     return (
         <div>
             <h2 className="text-center">Daftar Surah</h2>
-            {
+
+            <Search details={listSurah} />
+
+            {/* {
                 listSurah.map((item, index) => {
                     return (
                         <Accordion>
@@ -30,7 +34,7 @@ const ListSurah = () => {
                         </Accordion>
                     )
                 })
-            }
+            } */}
         </div>
     )
 }

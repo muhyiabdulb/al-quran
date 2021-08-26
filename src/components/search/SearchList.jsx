@@ -1,0 +1,40 @@
+import React from 'react'
+import { Accordion } from 'react-bootstrap'
+import { NavLink } from 'react-router-dom';
+
+const SearchList = ({ filterSurah }) => {
+    console.log(filterSurah)
+    const filtered = filterSurah == '' ? <h3 className="display-4 text-center text-danger">Surah Tidak Ada</h3> : filterSurah.map((item, index) => {
+        return (
+            <Accordion>
+                <Accordion.Item eventKey={index}>
+                    <Accordion.Header>
+                        {item.nama} ({item.asma})
+                        <br />
+                        {item.arti} ({item.ayat} ayat)
+                    </Accordion.Header>
+                    <Accordion.Body>
+                        <small className="text-muted">Surah ke {item.nomor}</small>
+                        <br />
+                        {item.keterangan}
+                        <br />
+                        <div className="d-grid gap-2 pt-3">
+                            <NavLink className="btn btn-primary" to={`/detail-surah/${item.nomor}`}>Detail Surah</NavLink>
+                        </div>
+                    </Accordion.Body>
+                </Accordion.Item>
+            </Accordion>
+        )
+    })
+
+    return(
+        <div>
+            {
+                // manggil surah yg sudah dicari
+                filtered
+            }
+        </div>
+    )
+}
+
+export default SearchList

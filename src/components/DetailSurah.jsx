@@ -8,9 +8,9 @@ import listSurah from '../json/list_surah.json'
 const DetailSurah = () => {
     const [detailSurah, setDetailSurah] = useState([])
     const [loading, setLoading] = useState(false)
-
     const { identifier } = useParams()
     console.log(identifier)
+    
     const getDetailSurah = async () => {
         setLoading(true)
         try {
