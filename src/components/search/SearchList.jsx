@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 const SearchList = ({ filterSurah }) => {
     console.log(filterSurah)
 
-    const filtered = filterSurah === '' ? <h3 className="display-4 text-center text-danger">Surah Tidak Ada</h3> : filterSurah.map((item, index) => {
+    const filtered = filterSurah == '' ? <h3 className="display-4 text-center text-danger">Surah Tidak Ada</h3> : filterSurah.map((item, index) => {
         return(
             <Accordion key={index}  className="font-monospace">
                 <Accordion.Item className={index % 2 === 0 ? 'bg-info' : ''} eventKey={index}>

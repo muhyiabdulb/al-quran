@@ -38,7 +38,7 @@ const DetailSurah = () => {
         }
     }
 
-    const data = loading ? <h3 className="position-absolute top-50 start-50 translate-middle text-success fs-2">Proses Request . . .</h3> :
+    const data = loading ? <h3 className="position-absolute top-50 start-50 translate-middle text-success fs-2">Proses Request ...</h3> :
         detailSurah.map((item, index) => {
             return (
                 <Card bg={index % 2 === 0 ? 'info' : ''} key={index}>

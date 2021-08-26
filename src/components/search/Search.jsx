@@ -18,7 +18,7 @@ const Search = ({ details }) => {
         )
     })
 
-    if(cariSurah === '') {
+    if(cariSurah == '') {
         console.log('tidak ada')
     } else {
         console.log('ada')
